@@ -1,0 +1,75 @@
+﻿@model IEnumerable<CoreDaperExample.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card">
+	<div class="card-body">
+		<form id="filter" method="get">
+			<div class="form-group">
+				<input name="Name" class="form-control" placeholder="İsim..." />
+			</div>
+			<div class="form-group">
+				<input name="SurName" class="form-control" placeholder="Soyisim..." v />
+			</div>
+			<div class="form-group">
+				<input name="Adress" class="form-control" placeholder="Adress..." v />
+			</div>
+			<button class="btn btn-warning">Filtrele</button>
+		</form>
+	</div>
+</div>
+<hr />
+<p>
+    <a asp-action="Create" class="btn btn-primary">Öğrenci Ekle</a>
+</p>
+<table class="table table-primary">
+    <thead class="table table-success">
+        <tr >
+            <th>
+                @Html.DisplayNameFor(model => model.StudentID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adress)
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.StudentID)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.SurName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Number)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Adress)
+			<td>
+			<td> <a href="/Student/Details/@item.StudentID" class="btn btn-success">Detay</a></td>
+			<td> <a href="/Student/Edit/@item.StudentID" class="btn btn-primary">Güncelle</a></td>
+			<td> <a href="/Student/Delete/@item.StudentID" class="btn btn-danger">Sil</a></td>
+		</tr>
+}
+    </tbody>
+</table>
