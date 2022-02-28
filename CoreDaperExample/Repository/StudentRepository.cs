@@ -31,7 +31,7 @@ namespace CoreDaperExample.Repository
             return db.Query<Student>(sql, new { @id = id }).Single();
         }
 
-        public List<Student> GetList(string name,string surname,string adress)
+        public List<Student> GetList(string name,string surname,string adress )
         {   
             var sql = "";
             if (name == null && surname==null && adress==null)
@@ -51,7 +51,8 @@ namespace CoreDaperExample.Repository
             {
                 sql = "SELECT * FROM Student WHERE Adress LIKE CONCAT('%',@adress,'%')";
             }
-            return db.Query<Student>(sql, new {@name=name,@surname=surname,@adress=adress }).ToList();
+           
+            return db.Query<Student>(sql, new { @name = name, @surname = surname, @adress = adress}).ToList();
         }
 
         public void Remove(int id)
@@ -59,14 +60,6 @@ namespace CoreDaperExample.Repository
             var sql = "DELETE FROM Student WHERE StudentID=@id";
             db.Execute(sql, new { id });
         }
-
-        public List<Student> Search(string name)
-        {
-            var sql = "SELECT * FROM Student WHERE Name LIKE '%@name%' ";
-            db.Execute(sql, new {@name=name });
-            return db.Query<Student>(sql).ToList();
-        }
-
         public Student Update(Student entity)
         {
             var sql = "UPDATE Student SET  Name=@Name,SurName=@SurName,Number=@Number,Adress=@Adress WHERE StudentID=@StudentID ";

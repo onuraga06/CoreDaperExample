@@ -15,10 +15,10 @@ namespace CoreDaperExample.Controllers
         {
             rep = _rep;
         }
-        public IActionResult Index(string name,string surname,string adress)
+        public IActionResult Index(string name,string surname,string adress,string number)
         {
 
-            return View(rep.GetList(name,surname,adress));
+            return View(rep.GetList(name,surname,adress,number));
         }
         public IActionResult Details(int id)
         {
