@@ -31,7 +31,7 @@ namespace CoreDaperExample.Repository
             return db.Query<Student>(sql, new { @id = id }).Single();
         }
 
-        public List<Student> GetList(string name,string surname,string adress )
+        public List<Student> GetList(string name,string surname,string adress)
         {   
             var sql = "";
             if (name == null && surname==null && adress==null)
@@ -48,14 +48,8 @@ namespace CoreDaperExample.Repository
                     {
                         sql = "SELECT * FROM Student WHERE Adress LIKE CONCAT('%',@adress,'%')";
                     }
-
                 }
-                
-
             }
-           
-
-           
             return db.Query<Student>(sql, new { @name = name, @surname = surname, @adress = adress}).ToList();
         }
 

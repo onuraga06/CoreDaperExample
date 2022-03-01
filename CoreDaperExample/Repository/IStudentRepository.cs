@@ -9,7 +9,7 @@ namespace CoreDaperExample.Repository
   public  interface IStudentRepository
     {
         Student Find(int id);
-        List<Student> GetList(string name,string surname,string adress );
+        List<Student> GetList(string name,string surname,string adress  );
         Student Add(Student entity);
         Student Update(Student entity);
         void Remove(int id);
