@@ -41,16 +41,20 @@ namespace CoreDaperExample.Repository
             else if(name!=null)
             {
                 sql = "SELECT * FROM Student WHERE Name LIKE CONCAT('%',@name,'%')";
+                if (surname != null)
+                {
+                    sql = "SELECT * FROM Student WHERE SurName LIKE CONCAT('%',@surname,'%')";
+                    if (adress != null)
+                    {
+                        sql = "SELECT * FROM Student WHERE Adress LIKE CONCAT('%',@adress,'%')";
+                    }
+
+                }
+                
 
             }
-            else if(surname!=null)
-            {
-                sql = "SELECT * FROM Student WHERE SurName LIKE CONCAT('%',@surname,'%')";
-            }
-            else if(adress!=null)
-            {
-                sql = "SELECT * FROM Student WHERE Adress LIKE CONCAT('%',@adress,'%')";
-            }
+           
+
            
             return db.Query<Student>(sql, new { @name = name, @surname = surname, @adress = adress}).ToList();
         }

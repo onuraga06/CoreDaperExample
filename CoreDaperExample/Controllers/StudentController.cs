@@ -18,7 +18,7 @@ namespace CoreDaperExample.Controllers
         public IActionResult Index(string name,string surname,string adress,string number)
         {
 
-            return View(rep.GetList(name,surname,adress,number));
+            return View(rep.GetList(name,surname,adress));
         }
         public IActionResult Details(int id)
         {
